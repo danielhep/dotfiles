@@ -8,6 +8,8 @@
      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
          bass source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
      end
+
+    fnm env --use-on-cd | source
     '';
     plugins = [
       { name="bass"; src = pkgs.fishPlugins.bass.src; }

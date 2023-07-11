@@ -55,6 +55,8 @@
     ripgrep
     ripgrep-all
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
+    yarn
+    fnm
   ];
 
   # Nicely reload system units when changing configs

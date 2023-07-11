@@ -12,7 +12,6 @@
       ms-python.python
       ms-toolsai.jupyter
     ]);
-
     userSettings = {
       update.mode = "none";
       window.zoomLevel = 0;
@@ -24,6 +23,7 @@
         bracketPairColorization.enabled = true;
         fontSize = 14;
       };
+      terminal.integrated.defaultProfile.osx = "fish";
     };
   };
 }

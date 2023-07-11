@@ -21,7 +21,8 @@
         owner = "gazorby";
         repo = "fish-exa";
         rev = "29077c16dcdba0019cda5cf596b54be113fbe47d";
-      }}
+        sha256 = "tvU2SxhqccDPj+uzASFyqAnrBXc7bv+pblKdHcnfa8w=";
+      };}
     ];
   };
 }

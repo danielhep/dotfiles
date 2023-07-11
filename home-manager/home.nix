@@ -51,6 +51,9 @@
     grc
     exa
     bat
+    iftop
+    ripgrep
+    ripgrep-all
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
   ];
 

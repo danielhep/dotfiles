@@ -16,7 +16,12 @@
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
       { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }
       { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
-      { name = "forgit"; src = pkgs.fishPlugins.forgit.src; }
+      { name = "z"; src = pkgs.fishPlugins.z.src; }
+      { name = "fish-exa"; src = pkgs.fetchFromGitHub {
+        owner = "gazorby";
+        repo = "fish-exa";
+        rev = "29077c16dcdba0019cda5cf596b54be113fbe47d";
+      }}
     ];
   };
 }

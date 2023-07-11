@@ -47,7 +47,10 @@
   home.packages = with pkgs; [
     tailscale
     fzf
+    zoxide
     grc
+    exa
+    bat
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
   ];
 

@@ -1,1 +1,1 @@
-home-manager switch -f ./home-manager/home.nix
+nix run home-manager -- --flake .#$(whoami)@$(hostname -s) switch

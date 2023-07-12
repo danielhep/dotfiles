@@ -7,6 +7,7 @@
     ./vscode.nix
     ./fish.nix
     ./git.nix
+    ./kitty.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
 
@@ -47,8 +48,16 @@
   home.packages = with pkgs; [
     tailscale
     fzf
+    zoxide
     grc
+    exa
+    bat
+    iftop
+    ripgrep
+    ripgrep-all
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
+    yarn
+    fnm
   ];
 
   # Nicely reload system units when changing configs

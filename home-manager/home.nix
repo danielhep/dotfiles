@@ -55,6 +55,7 @@
     iftop
     ripgrep
     ripgrep-all
+    starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
     yarn
     fnm

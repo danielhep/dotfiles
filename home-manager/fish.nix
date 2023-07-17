@@ -3,17 +3,18 @@
 {
   programs.fish = {
     enable = true;
-    shellInit = import ./fish/fish_variables.nix + ''
+    shellInit = ''
      # nix
      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
          bass source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
      end
 
     fnm env --use-on-cd | source
+
+    starship init fish | source
     '';
     plugins = [
       { name="bass"; src = pkgs.fishPlugins.bass.src; }
-      { name="tide"; src = pkgs.fishPlugins.tide.src; }
       { name = "sponge"; src = pkgs.fishPlugins.sponge.src; }
       { name = "grc"; src = pkgs.fishPlugins.grc.src; }
       { name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src; }

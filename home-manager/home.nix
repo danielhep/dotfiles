@@ -59,6 +59,8 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
     yarn
     fnm
+    lazydocker
+    lazygit
   ];
 
   # Nicely reload system units when changing configs

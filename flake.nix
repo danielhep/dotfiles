@@ -45,6 +45,32 @@
           }
         ];
       };
+      "danielhep@Daniels-MacBook-Pro" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [ 
+          ./home-manager/home.nix
+          { 
+            home = {
+              username = "danielhep";
+              homeDirectory = "/Users/danielhep";
+            };
+          }
+        ];
+      };
+      "danielhep@suse-vm" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [ 
+          ./home-manager/home.nix
+          { 
+            home = {
+              username = "danielhep";
+              homeDirectory = "/home/danielhep";
+            };
+          }
+        ];
+      };
     };
   };
 }

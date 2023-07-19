@@ -59,13 +59,12 @@
     iftop
     ripgrep
     ripgrep-all
+    starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
     fnm
-    # nodejs_16
-    # (yarn.override { nodejs = nodejs-16_x; })
-    # yarn
-    # nodePackages.yarn
     gh
+    lazydocker
+    lazygit
   ];
 
   # Nicely reload system units when changing configs

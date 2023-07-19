@@ -7,7 +7,7 @@
     ./vscode.nix
     ./fish.nix
     ./git.nix
-    ./kitty.nix
+    # ./kitty.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
 
@@ -27,6 +27,9 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      (self: prevPkgs: {
+          nodejs = prevPkgs.nodejs-16_x;
+      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -34,6 +37,7 @@
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = (_: true);
+      permittedInsecurePackages = [ "nodejs-16.20.1" ];
     };
   };
 
@@ -57,8 +61,8 @@
     ripgrep-all
     starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
-    yarn
     fnm
+    gh
     lazydocker
     lazygit
   ];

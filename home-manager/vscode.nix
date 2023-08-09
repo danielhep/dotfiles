@@ -11,6 +11,8 @@
       jnoortheen.nix-ide
       ms-python.python
       ms-toolsai.jupyter
+      graphql.vscode-graphql
+      eamodio.gitlens
     ]);
     userSettings = {
       update.mode = "none";

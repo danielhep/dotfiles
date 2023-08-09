@@ -57,10 +57,11 @@
     ripgrep-all
     starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
-    yarn
+    # yarn
     fnm
     lazydocker
     lazygit
+    gh
   ];
 
   # Nicely reload system units when changing configs

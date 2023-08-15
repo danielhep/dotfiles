@@ -62,6 +62,7 @@
     lazydocker
     lazygit
     gh
+    nodePackages_latest.pnpm
   ];
 
   # Nicely reload system units when changing configs

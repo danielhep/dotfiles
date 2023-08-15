@@ -13,6 +13,8 @@
       ms-toolsai.jupyter
       graphql.vscode-graphql
       eamodio.gitlens
+      dbaeumer.vscode-eslint
+      esbenp.prettier-vscode
     ]);
     userSettings = {
       update.mode = "none";

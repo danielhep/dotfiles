@@ -65,6 +65,7 @@
     lazygit
     gh
     nodePackages_latest.pnpm
+    ffmpeg_6
   ];
 
   # Nicely reload system units when changing configs

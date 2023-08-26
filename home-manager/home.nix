@@ -66,6 +66,7 @@
     gh
     nodePackages_latest.pnpm
     ffmpeg_6
+    sl
   ];
 
   # Nicely reload system units when changing configs

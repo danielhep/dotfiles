@@ -8,6 +8,7 @@
     ./fish.nix
     ./git.nix
     ./kitty.nix
+    ./emacs.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
 
@@ -44,6 +45,9 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+  # programs.doom-emacs = {
+  #   enable = true;
+  # };
   
   home.packages = with pkgs; [
     tailscale
@@ -63,6 +67,7 @@
     lazygit
     gh
     nodePackages_latest.pnpm
+    bun
   ];
 
   # Nicely reload system units when changing configs

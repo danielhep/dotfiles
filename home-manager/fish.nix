@@ -12,6 +12,8 @@
     fnm env --use-on-cd | source
 
     starship init fish | source
+
+    fish_add_path ~/.local/bin
     '';
     plugins = [
       { name="bass"; src = pkgs.fishPlugins.bass.src; }

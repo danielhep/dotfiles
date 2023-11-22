@@ -63,6 +63,8 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
     # yarn
     fnm
+    poetry
+    python312
     lazydocker
     lazygit
     poetry

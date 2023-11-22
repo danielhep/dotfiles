@@ -8,7 +8,7 @@
     ./fish.nix
     ./git.nix
     ./kitty.nix
-    ./emacs.nix
+    # ./emacs.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
 
@@ -65,9 +65,12 @@
     fnm
     lazydocker
     lazygit
+    poetry
     gh
     nodePackages_latest.pnpm
     bun
+    osmium-tool
+    maven
   ];
 
   # Nicely reload system units when changing configs

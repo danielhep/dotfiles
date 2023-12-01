@@ -28,6 +28,7 @@
         fontSize = 14;
       };
       terminal.integrated.defaultProfile.osx = "fish";
+      terminal.integrated.defaultProfile.linux = "fish";
     };
   };
 }

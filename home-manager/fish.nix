@@ -14,6 +14,8 @@
     starship init fish | source
 
     fish_add_path ~/.local/bin
+
+    direnv hook fish | source
     '';
     plugins = [
       { name="bass"; src = pkgs.fishPlugins.bass.src; }

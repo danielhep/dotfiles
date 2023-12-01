@@ -48,6 +48,7 @@
   home.packages = with pkgs; [
     tailscale
     fzf
+    direnv
     zoxide
     grc
     exa

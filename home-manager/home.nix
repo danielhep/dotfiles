@@ -57,15 +57,12 @@
     ripgrep-all
     starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
-    # yarn
     fnm
     poetry
     python312
     lazydocker
     lazygit
     gh
-    nodePackages_latest.pnpm
-    ffmpeg_6
     sl
   ];
 

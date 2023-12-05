@@ -3,6 +3,11 @@
 {
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+        ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+
+        direnv hook fish | source
+    '';
     shellInit = ''
      # nix
      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh

@@ -51,7 +51,9 @@
   
   home.packages = with pkgs; [
     tailscale
+    any-nix-shell
     fzf
+    direnv
     zoxide
     grc
     exa
@@ -61,7 +63,6 @@
     ripgrep-all
     starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
-    # yarn
     fnm
     poetry
     python312
@@ -69,10 +70,7 @@
     lazygit
     poetry
     gh
-    nodePackages_latest.pnpm
-    bun
-    osmium-tool
-    maven
+    sl
   ];
 
   # Nicely reload system units when changing configs

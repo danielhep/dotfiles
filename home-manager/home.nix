@@ -56,7 +56,7 @@
     direnv
     zoxide
     grc
-    exa
+    eza
     bat
     iftop
     ripgrep

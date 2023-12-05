@@ -18,7 +18,7 @@
       rust-lang.rust-analyzer
       tamasfe.even-better-toml
       usernamehw.errorlens
-      vadimcn.vscode-lldb
+      # vadimcn.vscode-lldb
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "oh-lucy-vscode";

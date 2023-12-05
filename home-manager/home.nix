@@ -47,6 +47,7 @@
   
   home.packages = with pkgs; [
     tailscale
+    any-nix-shell
     fzf
     direnv
     zoxide

@@ -1,8 +1,5 @@
-{ pkgs, specialArgs, ... }:
+{ pkgs, ... }:
 
-let
-  fontSize = if specialArgs.hidpi then 10 else 8;
-in
 {
   programs.alacritty = {
     enable = true;
@@ -23,7 +20,7 @@ in
           family = "JetBrainsMono Nerd Font";
           style = "Medium";
         };
-        size = fontSize;
+        size = 16;
       };
       key_bindings = [
         { key = 53; mods = "Shift"; mode = "Vi"; action = "SearchBackward"; }

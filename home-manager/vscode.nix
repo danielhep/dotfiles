@@ -9,7 +9,6 @@
       brettm12345.nixfmt-vscode
       vscodevim.vim
       jnoortheen.nix-ide
-      ms-python.python
       ms-toolsai.jupyter
       graphql.vscode-graphql
       eamodio.gitlens

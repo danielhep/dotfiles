@@ -50,7 +50,6 @@
   # };
   
   home.packages = with pkgs; [
-    tailscale
     any-nix-shell
     fzf
     direnv
@@ -64,11 +63,8 @@
     starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
     fnm
-    poetry
-    python312
     lazydocker
     lazygit
-    poetry
     gh
     sl
   ];

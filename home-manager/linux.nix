@@ -13,10 +13,9 @@ in
     # Add or override program settings specific to work
   };
 
-  home.packages = baseConfig.home.packages ++ with pkgs; [
+  home.packages = baseConfig.home.packages ++ (with pkgs; [
     # Additional packages for work environment
-    docker
-  ];
+  ]);
 
   systemd = baseConfig.systemd;
 

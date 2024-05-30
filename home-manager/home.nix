@@ -4,16 +4,11 @@
 { inputs, lib, config, pkgs, ... }: {
   # You can import other home-manager modules here
   imports = [
-    ./vscode.nix
-    ./fish.nix
-    ./git.nix
-    ./alacritty.nix
-    # ./emacs.nix
+    ./programs/vscode.nix
+    ./programs/fish/fish.nix
+    ./programs/git.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
   ];
 
   nixpkgs = {
@@ -38,21 +33,19 @@
     };
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
-  # programs.doom-emacs = {
-  #   enable = true;
-  # };
-
+  
   home.packages = with pkgs; [
-    tailscale
     any-nix-shell
     fzf
+    signal-desktop
     direnv
     zoxide
     grc
@@ -64,13 +57,12 @@
     starship
     (nerdfonts.override { fonts = [ "JetBrainsMono" "Meslo" ]; })
     fnm
-    poetry
-    python312
     lazydocker
     lazygit
-    poetry
     gh
     sl
+    inputs.devenv.packages."${system}".devenv
+    cachix
   ];
 
   programs.atuin = {

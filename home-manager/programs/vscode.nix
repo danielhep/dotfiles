@@ -9,7 +9,6 @@
       brettm12345.nixfmt-vscode
       vscodevim.vim
       jnoortheen.nix-ide
-      ms-python.python
       ms-toolsai.jupyter
       graphql.vscode-graphql
       eamodio.gitlens
@@ -18,13 +17,18 @@
       rust-lang.rust-analyzer
       tamasfe.even-better-toml
       usernamehw.errorlens
-      # vadimcn.vscode-lldb
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "oh-lucy-vscode";
         publisher = "hermitter";
         version = "0.0.1";
         sha256 = "sha256-Z8WGLboC79/1K1WathegEtpR7hqrpUu20p4VN/67MG0=";
+      }
+      {
+        name = "biome";
+        publisher = "biomejs";
+        version = "2024.5.251958";
+        sha256 = "sha256-Pxbvj6e3nRwuLKmPEtE02JdHmZbyuXNh4T+FZKjBkWo=";
       }
     ]);
     userSettings = {

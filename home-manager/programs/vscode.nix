@@ -24,6 +24,12 @@
         version = "0.0.1";
         sha256 = "sha256-Z8WGLboC79/1K1WathegEtpR7hqrpUu20p4VN/67MG0=";
       }
+      {
+        name = "biome";
+        publisher = "biomejs";
+        version = "2024.5.251958";
+        sha256 = "sha256-Pxbvj6e3nRwuLKmPEtE02JdHmZbyuXNh4T+FZKjBkWo=";
+      }
     ]);
     userSettings = {
       update.mode = "none";

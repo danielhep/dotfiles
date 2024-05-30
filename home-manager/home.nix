@@ -68,9 +68,9 @@
   programs.atuin = {
     enable = true;
     settings =  {
-        auto_sync = true;
-        update_check = false;
-        sync_frequency = "10m";
+      auto_sync = true;
+      update_check = false;
+      sync_frequency = "10m";
     }
     ;
   };

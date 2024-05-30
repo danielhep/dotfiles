@@ -36,7 +36,7 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ 
-          ./home-manager/home.nix
+          ./home-manager/macos.nix
           { 
             home = {
               username = "daniel.heppner";
@@ -49,7 +49,7 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ 
-          ./home-manager/home.nix
+          ./home-manager/macos.nix
           { 
             home = {
               username = "danielhep";

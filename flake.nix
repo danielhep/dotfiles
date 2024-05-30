@@ -32,7 +32,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#configurationName'
     homeConfigurations = {
-      "daniel.heppner@NSE092852" = home-manager.lib.homeManagerConfiguration {
+      "daniel.heppner@nse092852" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ 

@@ -48,7 +48,7 @@
   # programs.doom-emacs = {
   #   enable = true;
   # };
-  
+
   home.packages = with pkgs; [
     tailscale
     any-nix-shell
@@ -72,6 +72,16 @@
     gh
     sl
   ];
+
+  programs.atuin = {
+    enable = true;
+    settings =  {
+        auto_sync = true;
+        update_check = false;
+        sync_frequency = "10m";
+    }
+    ;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

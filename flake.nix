@@ -22,10 +22,10 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      your-hostname = nixpkgs.lib.nixosSystem {
+      borgbrr = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         # > Our main nixos configuration file <
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ ./nixos/borgbrr.nix ];
       };
     };
 
@@ -45,7 +45,7 @@
           }
         ];
       };
-      "danielhep@daniels-macbook-pro" = home-manager.lib.homeManagerConfiguration {
+      "danielhep@daniels-mbp" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ 

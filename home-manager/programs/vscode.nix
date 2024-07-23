@@ -12,11 +12,10 @@
       ms-toolsai.jupyter
       graphql.vscode-graphql
       eamodio.gitlens
+      astro-build.astro-vscode
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
-      rust-lang.rust-analyzer
       tamasfe.even-better-toml
-      usernamehw.errorlens
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "oh-lucy-vscode";
@@ -29,6 +28,12 @@
         publisher = "biomejs";
         version = "2024.5.251958";
         sha256 = "sha256-Pxbvj6e3nRwuLKmPEtE02JdHmZbyuXNh4T+FZKjBkWo=";
+      }
+      {
+        name = "pretty-ts-errors";
+        publisher = "yoavbls";
+        version = "0.5.4";
+        sha256 = "sha256-SMEqbpKYNck23zgULsdnsw4PS20XMPUpJ5kYh1fpd14=";
       }
     ]);
     userSettings = {

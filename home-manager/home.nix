@@ -45,7 +45,6 @@
   home.packages = with pkgs; [
     any-nix-shell
     fzf
-    signal-desktop
     direnv
     zoxide
     grc

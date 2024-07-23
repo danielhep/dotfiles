@@ -15,6 +15,7 @@ in
 
   home.packages = baseConfig.home.packages ++ (with pkgs; [
     # Additional packages for work environment
+    raycast
   ]);
 
   systemd = baseConfig.systemd;

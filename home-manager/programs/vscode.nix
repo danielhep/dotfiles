@@ -1,6 +1,11 @@
-{pkgs, ...}:
+{pkgs, lib, ...}:
 
 {
+  home.activation = {
+    removeVSCodeOSS = lib.hm.dag.entryBefore ["writeBoundary"] ''
+      $DRY_RUN_CMD rm -rf $HOME/.vscode-oss
+    '';
+  };
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;

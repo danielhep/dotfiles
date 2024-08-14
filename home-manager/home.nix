@@ -64,9 +64,15 @@
     cachix
   ];
 
-  programs.wezterm = {
-    enable = true;
-    extraConfig = builtins.readFile ./wezterm/wezterm.lua;
+  # programs.wezterm = {
+  #   enable = true;
+  #   # extraConfig = builtins.readFile ./programs/wezterm/wezterm.lua;
+  # };
+  home.file = {
+    ".config/wezterm" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/dotfiles/home-manager/programs/wezterm";
+      recursive = true;
+    };
   };
 
   programs.atuin = {
@@ -77,6 +83,11 @@
       sync_frequency = "10m";
     }
     ;
+  };
+
+  programs.zellij = {
+    enable = true;
+    enableFishIntegration = true;
   };
 
   # Nicely reload system units when changing configs

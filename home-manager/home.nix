@@ -62,19 +62,24 @@
     sl
     inputs.devenv.packages."${system}".devenv
     cachix
+    wezterm
   ];
 
   # programs.wezterm = {
   #   enable = true;
   #   # extraConfig = builtins.readFile ./programs/wezterm/wezterm.lua;
   # };
-  home.file = {
-    ".config/wezterm" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/dotfiles/home-manager/programs/wezterm";
+  # home.file = {
+  #   ".config/wezterm" = {
+  #     source = config.lib.file.mkOutOfStoreSymlink "/Users/daniel.heppner/git/dotfiles/dotfiles/home-manager/programs/wezterm";
+  #   };
+  # };
+  xdg.configFile = {
+    "wezterm" = {
+      source = ./programs/wezterm;
       recursive = true;
     };
   };
-
   programs.atuin = {
     enable = true;
     settings =  {
@@ -85,14 +90,16 @@
     ;
   };
 
-  programs.zellij = {
-    enable = true;
-    enableFishIntegration = true;
-  };
+  # programs.zellij = {
+  #   enable = true;
+  #   enableFishIntegration = true;
+  # };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
 }
+
+

@@ -18,6 +18,8 @@ in
     raycast
   ]);
 
+  xdg = baseConfig.xdg;
+
   systemd = baseConfig.systemd;
 
   home.stateVersion = baseConfig.home.stateVersion;

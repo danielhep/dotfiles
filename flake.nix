@@ -12,20 +12,21 @@
     devenv.url = "github:cachix/devenv/latest";
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
+    mac-app-util.url = "github:hraban/mac-app-util";
 
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      your-hostname = nixpkgs.lib.nixosSystem {
+      borgbrr = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         # > Our main nixos configuration file <
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ ./nixos/borgbrr.nix ];
       };
     };
 
@@ -45,7 +46,7 @@
           }
         ];
       };
-      "danielhep@daniels-macbook-pro" = home-manager.lib.homeManagerConfiguration {
+      "danielhep@daniels-mbp" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ 

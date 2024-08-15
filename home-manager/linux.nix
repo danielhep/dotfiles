@@ -14,7 +14,7 @@ in
   };
 
   home.packages = baseConfig.home.packages ++ (with pkgs; [
-    # Additional packages for work environment
+    signal-desktop
   ]);
 
   systemd = baseConfig.systemd;

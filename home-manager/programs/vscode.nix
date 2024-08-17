@@ -21,6 +21,7 @@
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
       tamasfe.even-better-toml
+      dart-code.flutter
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "oh-lucy-vscode";

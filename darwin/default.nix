@@ -1,10 +1,10 @@
 { config, username, pkgs, ... }:
 {
   imports = [
-    ../../modules/darwin/secrets.nix
-    ../../modules/darwin/home-manager.nix
-    ../../modules/shared
-    ../../modules/shared/cachix
+    # ../../modules/darwin/secrets.nix
+    # ../../modules/darwin/home-manager.nix
+    # ../../modules/shared
+    # ../../modules/shared/cachix
   ];
 
   # Auto upgrade nix package and the daemon service.
@@ -35,7 +35,7 @@
   environment.systemPackages = with pkgs; [
     emacs-unstable
     agenix.packages."${pkgs.system}".default
-  ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  ] ++ (import ../shared/packages.nix { inherit pkgs; });
 
   launchd.user.agents.emacs.path = [ config.environment.systemPath ];
   launchd.user.agents.emacs.serviceConfig = {

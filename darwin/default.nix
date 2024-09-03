@@ -7,6 +7,30 @@
     # ../../modules/shared/cachix
   ];
 
+  # Enable home-manager
+  home-manager = {
+     useGlobalPkgs = true;
+     users.${username} = { pkgs, config, lib, ... }:{
+       home = {
+         enableNixpkgsReleaseCheck = false;
+         packages = pkgs.callPackage ../packages.nix {};
+         # file = lib.mkMerge [
+         #   sharedFiles
+         #   additionalFiles
+         #   { "emacs-launcher.command".source = myEmacsLauncher; }
+         # ];
+
+         stateVersion = "24.05";
+       };
+
+       # programs = {} // import ../packages.nix { inherit config pkgs lib; };
+
+       # Marked broken Oct 20, 2022 check later to remove this
+       # https://github.com/nix-community/home-manager/issues/3344
+       manual.manpages.enable = false;
+     };
+   };
+
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
@@ -33,8 +57,8 @@
 
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
-    emacs-unstable
-    agenix.packages."${pkgs.system}".default
+    # agenix.packages."${pkgs.system}".default
+    sl
   ] ++ (import ../shared/packages.nix { inherit pkgs; });
 
   launchd.user.agents.emacs.path = [ config.environment.systemPath ];

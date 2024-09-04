@@ -15,6 +15,7 @@ with pkgs;
   ripgrep
   ripgrep-all
   starship
+  comma
   (nerdfonts.override {
     fonts = [
       "JetBrainsMono"

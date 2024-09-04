@@ -15,9 +15,11 @@
             # Utils
             "syncthing"
             "raycast"
+            "vanilla"
+            "stats"
 
             # Browsers
             "firefox"
-        ]
+        ];
     };
 }

@@ -13,21 +13,10 @@
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    devenv.url = "github:cachix/devenv/latest";
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
     mac-app-util.url = "github:hraban/mac-app-util";
 
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
-
-    # Other sources
-    comma = {
-      url = "github:Shopify/comma";
-      flake = false;
-    };
   };
 
   outputs =

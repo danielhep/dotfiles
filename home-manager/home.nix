@@ -51,10 +51,10 @@
 
   home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
 
-  # programs.wezterm = {
-  #   enable = true;
-  #   # extraConfig = builtins.readFile ./programs/wezterm/wezterm.lua;
-  # };
+  programs.wezterm = {
+    enable = true;
+    extraConfig = builtins.readFile ./programs/wezterm.lua;
+  };
   # home.file = {
   #   ".config/wezterm" = {
   #     source = config.lib.file.mkOutOfStoreSymlink "/Users/daniel.heppner/git/dotfiles/dotfiles/home-manager/programs/wezterm";

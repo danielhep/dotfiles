@@ -2,6 +2,7 @@
 
 with pkgs; [
     any-nix-shell
+    fish
     fzf
     direnv
     zoxide

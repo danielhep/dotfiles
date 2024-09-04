@@ -7,6 +7,7 @@
     ./programs/vscode.nix
     ./programs/fish/fish.nix
     ./programs/git.nix
+    ./programs/firefox.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
   ];
@@ -43,7 +44,7 @@
   programs.git.enable = true;
 
   home.packages = with pkgs; [
-  ];
+  ] ++ import ../shared/packages.nix {inherit pkgs;};
 
   # programs.wezterm = {
   #   enable = true;

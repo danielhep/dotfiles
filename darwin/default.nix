@@ -1,42 +1,24 @@
 { config, username, pkgs, ... }:
 {
+
   imports = [
-    # ../../modules/darwin/secrets.nix
-    # ../../modules/darwin/home-manager.nix
-    # ../../modules/shared
-    # ../../modules/shared/cachix
   ];
+  # It me
+  users.users.${username} = {
+    name = "${username}";
+    home = "/Users/${username}";
+    isHidden = false;
+    shell = pkgs.fish;
+  };
 
   # Enable home-manager
-  home-manager = {
-     useGlobalPkgs = true;
-     users.${username} = { pkgs, config, lib, ... }:{
-       home = {
-         enableNixpkgsReleaseCheck = false;
-         packages = pkgs.callPackage ../packages.nix {};
-         # file = lib.mkMerge [
-         #   sharedFiles
-         #   additionalFiles
-         #   { "emacs-launcher.command".source = myEmacsLauncher; }
-         # ];
-
-         stateVersion = "24.05";
-       };
-
-       # programs = {} // import ../packages.nix { inherit config pkgs lib; };
-
-       # Marked broken Oct 20, 2022 check later to remove this
-       # https://github.com/nix-community/home-manager/issues/3344
-       manual.manpages.enable = false;
-     };
-   };
-
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  programs.fish.enable = true;
+  programs.zsh.enable = true;
   # Setup user, packages, programs
   nix = {
-    package = pkgs.nix;
     settings.trusted-users = [ "@admin" "${username}" ];
 
     gc = {
@@ -52,14 +34,10 @@
     '';
   };
 
-  # Turn off NIX_PATH warnings now that we're using flakes
-  system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = with pkgs; [
-    # agenix.packages."${pkgs.system}".default
-    sl
-  ] ++ (import ../shared/packages.nix { inherit pkgs; });
+  # environment.systemPackages = with pkgs; [
+  # ] ++ (import ../shared/packages.nix { inherit pkgs; });
 
   launchd.user.agents.emacs.path = [ config.environment.systemPath ];
   launchd.user.agents.emacs.serviceConfig = {
@@ -73,7 +51,17 @@
     StandardOutPath = "/tmp/emacs.out.log";
   };
 
+  # Add ability to used TouchID for sudo authentication
+  security.pam.enableSudoTouchIdAuth = true;
+
   system = {
+    # Turn off NIX_PATH warnings now that we're using flakes
+    checks.verifyNixPath = false;
+
+    activationScripts.activateFishShell.enable = true;
+    activationScripts.activateFishShell.text = ''
+        dscl . -create /Users/${username} UserShell /run/current-system/sw/bin/fish
+    '';
     stateVersion = 4;
 
     defaults = {
@@ -97,7 +85,7 @@
       };
 
       dock = {
-        autohide = false;
+        autohide = true;
         show-recents = false;
         launchanim = true;
         mouse-over-hilite-stack = true;

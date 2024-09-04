@@ -21,17 +21,26 @@
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     nix-colors.url = "github:misterio77/nix-colors";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+
+    # Other sources
+    comma = { url = github:Shopify/comma; flake = false; };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, darwin, mac-app-util, determinate, ... }@inputs:
   let
     mkDarwinConfig = { system, username }: darwin.lib.darwinSystem {
       inherit system;
       specialArgs = { inherit inputs username; };
       modules = [
         ./darwin
+        determinate.darwinModules.default
+        mac-app-util.darwinModules.default
         home-manager.darwinModules.home-manager
         {
+          home-manager.sharedModules = [
+            mac-app-util.homeManagerModules.default
+          ];
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${username} = import ./home-manager/macos.nix;

@@ -35,17 +35,17 @@
       '';
     };
     shellInit = ''
-        # nix
-        if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-            bass source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-        end
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+      # nix
+      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+          bass source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+      end
+      eval "$(/opt/homebrew/bin/brew shellenv)"
 
-        fnm env --use-on-cd | source
+      fnm env --use-on-cd | source
 
-        starship init fish | source
+      starship init fish | source
 
-        fish_add_path ~/.local/bin
+      fish_add_path ~/.local/bin
     '';
     plugins = [
       {

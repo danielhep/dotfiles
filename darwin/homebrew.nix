@@ -5,20 +5,20 @@
   ...
 }:
 {
-    homebrew = {
-        enable = true;
-        casks = [
-            "discord"
-            "signal"
-            "whatsapp"
+  homebrew = {
+    enable = true;
+    casks = [
+      "discord"
+      "signal"
+      "whatsapp"
 
-            # Utils
-            "syncthing"
-            "raycast"
-            "stats"
+      # Utils
+      "syncthing"
+      "raycast"
+      "stats"
 
-            # Browsers
-            "firefox"
-        ];
-    };
+      # Browsers
+      "firefox"
+    ];
+  };
 }

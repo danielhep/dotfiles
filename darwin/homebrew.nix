@@ -15,7 +15,6 @@
             # Utils
             "syncthing"
             "raycast"
-            "vanilla"
             "stats"
 
             # Browsers

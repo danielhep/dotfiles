@@ -51,18 +51,19 @@
 
   home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
 
+  programs.tmux = {
+    enable = true;
+  };
   programs.wezterm = {
     enable = true;
-    extraConfig = builtins.readFile ./programs/wezterm.lua;
   };
-  # home.file = {
-  #   ".config/wezterm" = {
-  #     source = config.lib.file.mkOutOfStoreSymlink "/Users/daniel.heppner/git/dotfiles/dotfiles/home-manager/programs/wezterm";
-  #   };
-  # };
   xdg.configFile = {
     "wezterm" = {
       source = ./programs/wezterm;
+      recursive = true;
+    };
+    "tmux" = {
+      source = ./programs/tmux.conf;
       recursive = true;
     };
   };

@@ -57,13 +57,13 @@
   programs.wezterm = {
     enable = true;
   };
+  home.file.".config" = {
+    source = ../config;
+    recursive = true;
+  };
   xdg.configFile = {
     "wezterm" = {
       source = ./programs/wezterm;
-      recursive = true;
-    };
-    "tmux" = {
-      source = ./programs/tmux.conf;
       recursive = true;
     };
   };

@@ -1,8 +1,12 @@
-{ config, username, pkgs, ... }:
+{
+  config,
+  username,
+  pkgs,
+  ...
+}:
 {
 
-  imports = [
-  ];
+  imports = [ ];
   # It me
   users.users.${username} = {
     name = "${username}";
@@ -19,12 +23,19 @@
   programs.zsh.enable = true;
   # Setup user, packages, programs
   nix = {
-    settings.trusted-users = [ "@admin" "${username}" ];
+    settings.trusted-users = [
+      "@admin"
+      "${username}"
+    ];
 
     gc = {
       user = "root";
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
 
@@ -34,10 +45,11 @@
     '';
   };
 
-
   # Load configuration that is shared across systems
-  # environment.systemPackages = with pkgs; [
-  # ] ++ (import ../shared/packages.nix { inherit pkgs; });
+  environment.systemPackages = with pkgs; [
+    fswatch
+    dockutil
+  ];
 
   launchd.user.agents.emacs.path = [ config.environment.systemPath ];
   launchd.user.agents.emacs.serviceConfig = {
@@ -60,7 +72,7 @@
 
     activationScripts.activateFishShell.enable = true;
     activationScripts.activateFishShell.text = ''
-        dscl . -create /Users/${username} UserShell /run/current-system/sw/bin/fish
+      dscl . -create /Users/${username} UserShell /run/current-system/sw/bin/fish
     '';
     stateVersion = 4;
 

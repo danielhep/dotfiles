@@ -6,7 +6,9 @@
 }:
 {
 
-  imports = [ ];
+  imports = [
+    ./homebrew.nix
+  ];
   # It me
   users.users.${username} = {
     name = "${username}";

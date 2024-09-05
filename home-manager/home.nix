@@ -51,15 +51,8 @@
 
   home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
 
-  programs.tmux = {
-    enable = true;
-  };
   programs.wezterm = {
     enable = true;
-  };
-  home.file.".config" = {
-    source = ../config;
-    recursive = true;
   };
   xdg.configFile = {
     "wezterm" = {
@@ -75,11 +68,6 @@
       sync_frequency = "10m";
     };
   };
-
-  # programs.zellij = {
-  #   enable = true;
-  #   enableFishIntegration = true;
-  # };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

@@ -11,6 +11,9 @@
       "discord"
       "signal"
       "whatsapp"
+      "proton-mail"
+      "rectangle"
+      "bitwarden"
 
       # Utils
       "syncthing"

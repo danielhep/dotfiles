@@ -16,14 +16,15 @@
         brettm12345.nixfmt-vscode
         vscodevim.vim
         jnoortheen.nix-ide
-        ms-toolsai.jupyter
         graphql.vscode-graphql
         eamodio.gitlens
-        astro-build.astro-vscode
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         tamasfe.even-better-toml
-        dart-code.flutter
+        supermaven.supermaven
+        ms-toolsai.jupyter
+        ms-python.python
+        ms-pyright.pyright
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {

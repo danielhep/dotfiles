@@ -15,6 +15,10 @@
     shell = pkgs.fish;
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   # Enable home-manager
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;

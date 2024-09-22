@@ -31,7 +31,7 @@
         end
 
         # Run the rsync command
-        rsync -avPh --stats --remove-source-files -e "ssh -p 2022 -i ~/.ssh/personal_id_rsa" ./ $DEST
+        rsync -avPh --stats --remove-source-files -e "ssh -p 2022 -i ~/.ssh/id_rsa" ./ $DEST
       '';
     };
     shellInit = ''

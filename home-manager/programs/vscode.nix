@@ -14,6 +14,7 @@
       with pkgs.vscode-extensions;
       [
         brettm12345.nixfmt-vscode
+        golang.go
         vscodevim.vim
         jnoortheen.nix-ide
         graphql.vscode-graphql

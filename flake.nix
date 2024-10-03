@@ -69,7 +69,7 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        personal-nixos = nixpkgs.lib.nixosSystem {
+        nixos-personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;

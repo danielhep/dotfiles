@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
@@ -23,6 +24,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       home-manager,
       darwin,
       mac-app-util,
@@ -30,12 +32,23 @@
       ...
     }@inputs:
     let
+      # Define the overlay
+      vscodiumOverlay = final: prev: {
+        vscodium = nixpkgs-unstable.legacyPackages.${prev.system}.vscodium;
+      };
+      # Function to apply overlay
+      pkgsForSystem = system: import nixpkgs {
+        inherit system;
+        overlays = [ vscodiumOverlay ];
+        config = { allowUnfree = true; };  # Set allowUnfree here
+      };
       mkDarwinConfig =
         { system, username }:
         darwin.lib.darwinSystem {
           inherit system;
           specialArgs = {
             inherit inputs username;
+            pkgs = pkgsForSystem system;
           };
           modules = [
             ./darwin
@@ -43,6 +56,7 @@
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             {
+              nixpkgs.pkgs = pkgsForSystem system;
               home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -55,12 +69,20 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        borgbrr = nixpkgs.lib.nixosSystem {
+        personal-nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
-          }; # Pass flake inputs to our config
-          # > Our main nixos configuration file <
-          modules = [ ./nixos/borgbrr.nix ];
+          };
+          modules = [
+            ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.danielhep = import ./home-manager/linux.nix;
+            }
+          ];
         };
       };
 

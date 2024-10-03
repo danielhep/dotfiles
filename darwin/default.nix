@@ -2,6 +2,8 @@
   config,
   username,
   pkgs,
+  system,
+  inputs,
   ...
 }:
 {

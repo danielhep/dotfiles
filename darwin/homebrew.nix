@@ -13,7 +13,6 @@
       "whatsapp"
       "proton-mail"
       "rectangle"
-      "bitwarden"
       "tailscale"
 
       # Utils

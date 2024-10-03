@@ -20,8 +20,6 @@ in
 {
   imports = baseConfig.imports;
 
-  nixpkgs = baseConfig.nixpkgs;
-
   programs = baseConfig.programs // {
     # Add or override program settings specific to work
   };

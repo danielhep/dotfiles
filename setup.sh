@@ -3,7 +3,7 @@
 LOWERCASE_HOSTNAME=$(hostname -s | awk '{print tolower($0)}')
 OS=$(uname -s)
 
-if grep -q 'NAME=NixOS' /etc/os-release 2>/dev/null; then
+f grep -q 'NAME=NixOS' /etc/os-release 2>/dev/null; then
     echo "Detected NixOS. Rebuilding system configuration..."
     sudo nixos-rebuild switch --flake .#$LOWERCASE_HOSTNAME
 elif [ "$OS" = "Darwin" ]; then

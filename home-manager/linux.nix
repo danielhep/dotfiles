@@ -14,6 +14,7 @@ let
       lib
       config
       pkgs
+      ;
   };
 in
 {

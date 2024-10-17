@@ -24,6 +24,10 @@
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
+      (final: prev: {
+        # Add your own packages here
+        vscodium = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.vscodium;
+      })
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {

@@ -13,7 +13,9 @@
     extensions = (
       with pkgs.vscode-extensions;
       [
+        unifiedjs.vscode-mdx
         brettm12345.nixfmt-vscode
+        golang.go
         vscodevim.vim
         jnoortheen.nix-ide
         graphql.vscode-graphql
@@ -42,8 +44,14 @@
         {
           name = "pretty-ts-errors";
           publisher = "yoavbls";
-          version = "0.5.4";
+          version = "0.6.0";
           sha256 = "sha256-SMEqbpKYNck23zgULsdnsw4PS20XMPUpJ5kYh1fpd14=";
+        }
+        {
+          name = "templ";
+          publisher = "a-h";
+          version = "0.0.29";
+          sha256 = "sha256-RZ++wxL2OqBh3hiLAwKIw5QLjU/imsK7irQUHbJ/tqM=";
         }
       ]
     );

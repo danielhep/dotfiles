@@ -25,7 +25,6 @@
         tamasfe.even-better-toml
         supermaven.supermaven
         ms-toolsai.jupyter
-        ms-python.python
         ms-pyright.pyright
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [

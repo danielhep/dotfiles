@@ -8,6 +8,7 @@ with pkgs;
   direnv
   zoxide
   nixfmt-rfc-style
+  iperf3
   grc
   eza
   bat
@@ -27,7 +28,7 @@ with pkgs;
   lazygit
   gh
   sl
-  # inputs.devenv.packages."${system}".devenv
+  inputs.devenv.packages."${system}".devenv
   cachix
   wezterm
 ]

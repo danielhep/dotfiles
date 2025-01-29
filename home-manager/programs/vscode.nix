@@ -19,6 +19,7 @@
         vscodevim.vim
         jnoortheen.nix-ide
         graphql.vscode-graphql
+        graphql.vscode-graphql-syntax
         eamodio.gitlens
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode

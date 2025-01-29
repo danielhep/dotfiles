@@ -11,7 +11,7 @@
       "discord"
       "signal"
       "whatsapp"
-      "proton-mail"
+      "protonmail-bridge"
       "rectangle"
       "tailscale"
 

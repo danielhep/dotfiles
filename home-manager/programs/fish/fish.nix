@@ -39,7 +39,9 @@
       if test -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
           bass source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
       end
-      eval "$(/opt/homebrew/bin/brew shellenv)"
+      if test -e /opt/homebrew/bin/brew
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      end
 
       fnm env --use-on-cd | source
 

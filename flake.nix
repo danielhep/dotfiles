@@ -93,6 +93,10 @@
           system = "aarch64-darwin";
           username = "danielhep";
         };
+        nse092852 = mkDarwinConfig {
+          system = "aarch64-darwin";
+          username = "daniel.heppner";
+        };
       };
 
       # Standalone home-manager configuration entrypoint

@@ -133,7 +133,7 @@
           ];
         };
         "danielhep@personal-linux" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          pkgs = pkgsForSystem "x86_64-linux";
           extraSpecialArgs = {
             inherit inputs;
           }; # Pass flake inputs to our config

@@ -28,7 +28,4 @@ with pkgs;
   lazygit
   gh
   sl
-#  inputs.devenv.packages."${system}".devenv
-  cachix
-  wezterm
 ]

@@ -18,6 +18,8 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
+    
+    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs =
@@ -29,17 +31,20 @@
       darwin,
       mac-app-util,
       determinate,
+      nixgl,
       ...
     }@inputs:
     let
       # Define the overlay
-      vscodiumOverlay = final: prev: {
+      overlays = final: prev: {
         vscodium = nixpkgs-unstable.legacyPackages.${prev.system}.vscodium;
+        aider-chat = nixpkgs-unstable.legacyPackages.${prev.system}.aider-chat;
+        signal-desktop = nixpkgs-unstable.legacyPackages.${prev.system}.signal-desktop;
       };
       # Function to apply overlay
       pkgsForSystem = system: import nixpkgs {
         inherit system;
-        overlays = [ vscodiumOverlay ];
+        overlays = [  overlays nixgl.overlay ];
         config = { allowUnfree = true; };  # Set allowUnfree here
       };
       mkDarwinConfig =

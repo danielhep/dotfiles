@@ -8,25 +8,37 @@
 }:
 
 let
-  baseConfig = import ./home.nix {
-    inherit
-      inputs
-      lib
-      config
-      pkgs
-      ;
-  };
+  nixgl = pkgs.nixgl;
+  nixGLWrap = pkg: pkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
+    mkdir $out
+    ln -s ${pkg}/* $out
+    rm $out/bin
+    mkdir $out/bin
+    for bin in ${pkg}/bin/*; do
+     wrapped_bin=$out/bin/$(basename $bin)
+     echo "exec ${lib.getExe nixgl.nixGLIntel} $bin \$@" > $wrapped_bin
+     chmod +x $wrapped_bin
+    done
+  '';
+
+  # Create a shell script that wraps the wezterm call with nixGL
+  wrappedWezterm = nixGLWrap pkgs.wezterm;
+
 in
 {
-  imports = baseConfig.imports;
+  imports = [
+    ./home.nix # Import home.nix to use its settings as a base
+  ];
 
-  programs = baseConfig.programs // {
-    # Add or override program settings specific to work
+  programs.wezterm = {
+    # programs.wezterm.enable and .extraConfig are inherited from home.nix
+    # Override the package to use our nixGL wrapped version for Linux
+    package = wrappedWezterm;
   };
 
-  home.packages = baseConfig.home.packages ++ (with pkgs; [ signal-desktop ]);
-
-  systemd = baseConfig.systemd;
-
-  home.stateVersion = baseConfig.home.stateVersion;
+  # These packages are additional to those defined in home.nix.
+  # The module system will concatenate them.
+  home.packages = with pkgs; [
+    aider-chat
+  ];
 }

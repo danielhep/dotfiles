@@ -116,5 +116,8 @@ config.keys = {
     split_nav('resize', 'l'),
 }
 
+-- Spawn a fish shell in login mode
+config.default_prog = { 'fish', '-l' }
+
 -- and finally, return the configuration to wezterm
 return config

@@ -57,11 +57,13 @@
 
   programs.wezterm = {
     enable = true;
+    extraConfig = builtins.readFile ./programs/wezterm/wezterm.lua;
   };
   xdg.configFile = {
     "wezterm" = {
       source = ./programs/wezterm;
       recursive = true;
+      enable = true;
     };
   };
   programs.atuin = {

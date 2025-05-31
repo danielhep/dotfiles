@@ -6,7 +6,7 @@
       $DRY_RUN_CMD rm -rf $HOME/.vscode-oss
     '';
   };
-  programs.vscode = {
+  programs.vscode.profiles.default = {
     enable = true;
     package = pkgs.vscodium;
 

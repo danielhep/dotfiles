@@ -3,11 +3,10 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix-darwin
@@ -18,7 +17,7 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
-    
+
     nixgl.url = "github:nix-community/nixGL";
   };
 
@@ -26,7 +25,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
       home-manager,
       darwin,
       mac-app-util,
@@ -37,10 +35,10 @@
     let
       # Define the overlay
       overlays = final: prev: {
-        vscodium = nixpkgs-unstable.legacyPackages.${prev.system}.vscodium;
-        aider-chat = nixpkgs-unstable.legacyPackages.${prev.system}.aider-chat;
-        signal-desktop = nixpkgs-unstable.legacyPackages.${prev.system}.signal-desktop;
-        vscode-extensions = nixpkgs-unstable.legacyPackages.${prev.system}.vscode-extensions;
+        # vscodium = nixpkgs-unstable.legacyPackages.${prev.system}.vscodium;
+        # aider-chat = nixpkgs-unstable.legacyPackages.${prev.system}.aider-chat;
+        # signal-desktop = nixpkgs-unstable.legacyPackages.${prev.system}.signal-desktop;
+        # vscode-extensions = nixpkgs-unstable.legacyPackages.${prev.system}.vscode-extensions;
       };
       # Function to apply overlay
       pkgsForSystem = system: import nixpkgs {

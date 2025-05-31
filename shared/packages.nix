@@ -17,12 +17,8 @@ with pkgs;
   ripgrep-all
   starship
   comma
-  (nerdfonts.override {
-    fonts = [
-      "JetBrainsMono"
-      "Meslo"
-    ];
-  })
+  nerd-fonts.jetbrains-mono
+  nerd-fonts.meslo-lg
   fnm
   lazydocker
   lazygit

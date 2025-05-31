@@ -10,6 +10,13 @@
     };
     includes = [
       {
+        contents = {
+          push = {
+            autoSetupRemote = true;
+          };
+        };
+      }
+      {
         condition = "hasconfig:remote.*.url:git@github.com:danielhep/**";
         contents = {
           core = {

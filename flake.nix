@@ -40,6 +40,7 @@
         vscodium = nixpkgs-unstable.legacyPackages.${prev.system}.vscodium;
         aider-chat = nixpkgs-unstable.legacyPackages.${prev.system}.aider-chat;
         signal-desktop = nixpkgs-unstable.legacyPackages.${prev.system}.signal-desktop;
+        vscode-extensions = nixpkgs-unstable.legacyPackages.${prev.system}.vscode-extensions;
       };
       # Function to apply overlay
       pkgsForSystem = system: import nixpkgs {

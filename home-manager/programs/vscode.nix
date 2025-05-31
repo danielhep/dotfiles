@@ -24,9 +24,9 @@
         dbaeumer.vscode-eslint
         esbenp.prettier-vscode
         tamasfe.even-better-toml
-        supermaven.supermaven
         ms-toolsai.jupyter
         ms-pyright.pyright
+        rooveterinaryinc.roo-cline
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {

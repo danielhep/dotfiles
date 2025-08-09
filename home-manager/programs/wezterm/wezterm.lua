@@ -117,7 +117,7 @@ config.keys = {
 }
 
 -- Spawn a fish shell in login mode
-config.default_prog = { 'fish', '-l' }
+-- config.default_prog = { 'sh', '-c', 'exec fish', '-l' }
 
 -- and finally, return the configuration to wezterm
 return config

@@ -8,7 +8,7 @@ if grep -q 'NAME=NixOS' /etc/os-release 2>/dev/null; then
     sudo nixos-rebuild switch --flake .#$LOWERCASE_HOSTNAME
 elif [ "$OS" = "Darwin" ]; then
     echo "Detected macOS. Running nix-darwin..."
-    nix run nix-darwin -- switch --flake .#$LOWERCASE_HOSTNAME
+    sudo nix run nix-darwin -- switch --flake .#$LOWERCASE_HOSTNAME
 else
     echo "Running home-manager..."
     nix run home-manager -- --flake .#$(whoami)@$LOWERCASE_HOSTNAME switch

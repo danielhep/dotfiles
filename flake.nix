@@ -56,7 +56,6 @@
           };
           modules = [
             ./darwin
-            determinate.darwinModules.default
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             {

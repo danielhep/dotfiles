@@ -17,38 +17,15 @@
     shell = pkgs.fish;
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
-  # Enable home-manager
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # nixpkgs.config = {
+  #   allowUnfree = true;
+  # };
 
   programs.fish.enable = true;
   programs.zsh.enable = true;
   # Setup user, packages, programs
   nix = {
-    settings.trusted-users = [
-      "@admin"
-      "${username}"
-    ];
-
-    gc = {
-      user = "root";
-      automatic = true;
-      interval = {
-        Weekday = 0;
-        Hour = 2;
-        Minute = 0;
-      };
-      options = "--delete-older-than 30d";
-    };
-
-    # Turn this on to make command line easier
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
+    enable = false;
   };
 
   # Load configuration that is shared across systems
@@ -57,22 +34,11 @@
     dockutil
   ];
 
-  launchd.user.agents.emacs.path = [ config.environment.systemPath ];
-  launchd.user.agents.emacs.serviceConfig = {
-    KeepAlive = true;
-    ProgramArguments = [
-      "/bin/sh"
-      "-c"
-      "{ osascript -e 'display notification \"Attempting to start Emacs...\" with title \"Emacs Launch\"'; /bin/wait4path ${pkgs.emacs}/bin/emacs && { ${pkgs.emacs}/bin/emacs --fg-daemon; if [ $? -eq 0 ]; then osascript -e 'display notification \"Emacs has started.\" with title \"Emacs Launch\"'; else osascript -e 'display notification \"Failed to start Emacs.\" with title \"Emacs Launch\"' >&2; fi; } } &> /tmp/emacs_launch.log"
-    ];
-    StandardErrorPath = "/tmp/emacs.err.log";
-    StandardOutPath = "/tmp/emacs.out.log";
-  };
-
   # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
+    primaryUser = username;
     # Turn off NIX_PATH warnings now that we're using flakes
     checks.verifyNixPath = false;
 

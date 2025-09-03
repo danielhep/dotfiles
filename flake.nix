@@ -96,7 +96,7 @@
           system = "aarch64-darwin";
           username = "danielhep";
         };
-        nse092852 = mkDarwinConfig {
+        arcadis-mac-ch2wkxtjgj = mkDarwinConfig {
           system = "aarch64-darwin";
           username = "daniel.heppner";
         };
@@ -105,7 +105,7 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#configurationName'
       homeConfigurations = {
-        "daniel.heppner@nse092852" = home-manager.lib.homeManagerConfiguration {
+        "daniel.heppner@arcadis-mac-ch2wkxtjgj" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs;

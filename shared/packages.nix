@@ -23,5 +23,7 @@ with pkgs;
   lazydocker
   lazygit
   gh
+  jujutsu
+  jjui
   sl
 ]

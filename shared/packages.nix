@@ -17,6 +17,8 @@ with pkgs;
   ripgrep-all
   starship
   comma
+  jdk24
+  maven
   nerd-fonts.jetbrains-mono
   nerd-fonts.meslo-lg
   fnm

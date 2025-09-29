@@ -21,6 +21,8 @@ with pkgs;
   maven
   nerd-fonts.jetbrains-mono
   nerd-fonts.meslo-lg
+  go
+  fvm
   fnm
   lazydocker
   lazygit

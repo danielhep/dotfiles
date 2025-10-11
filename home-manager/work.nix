@@ -19,5 +19,6 @@ in
 {
   home.packages = [
     pkgs.colima
+    pkgs.docker
   ];
 }

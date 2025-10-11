@@ -47,7 +47,7 @@
         config = { allowUnfree = true; };  # Set allowUnfree here
       };
       mkDarwinConfig =
-        { system, username }:
+        { system, username, homeModules ? [ ], sharedHomeModules ? [ ] }:
         darwin.lib.darwinSystem {
           inherit system;
           specialArgs = {
@@ -60,10 +60,12 @@
             home-manager.darwinModules.home-manager
             {
               nixpkgs.pkgs = pkgsForSystem system;
-              home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
+              home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ] ++ sharedHomeModules;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home-manager/macos.nix;
+              home-manager.users.${username} = {
+                imports = [ ./home-manager/macos.nix ] ++ homeModules;
+              };
             }
           ];
         };
@@ -99,27 +101,29 @@
         arcadis-mac-ch2wkxtjgj = mkDarwinConfig {
           system = "aarch64-darwin";
           username = "daniel.heppner";
+          homeModules = [ ./home-manager/work.nix ];
         };
       };
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#configurationName'
       homeConfigurations = {
-        "daniel.heppner@arcadis-mac-ch2wkxtjgj" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {
-            inherit inputs;
-          }; # Pass flake inputs to our config
-          modules = [
-            ./home-manager/macos.nix
-            {
-              home = {
-                username = "daniel.heppner";
-                homeDirectory = "/Users/daniel.heppner";
-              };
-            }
-          ];
-        };
+      #   "daniel.heppner@arcadis-mac-ch2wkxtjgj" = home-manager.lib.homeManagerConfiguration {
+      #     pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+      #     extraSpecialArgs = {
+      #       inherit inputs;
+      #     }; # Pass flake inputs to our config
+      #     modules = [
+      #       ./home-manager/macos.nix
+      #       ./home-manager/work.nix
+      #       {
+      #         home = {
+      #           username = "daniel.heppner";
+      #           homeDirectory = "/Users/daniel.heppner";
+      #         };
+      #       }
+      #     ];
+      #   };
         "danielhep@daniels-mbp" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {

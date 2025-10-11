@@ -1,4 +1,4 @@
-# work.nix
+# macos.nix
 {
   inputs,
   lib,

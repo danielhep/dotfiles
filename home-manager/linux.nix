@@ -30,15 +30,10 @@ in
     ./home.nix # Import home.nix to use its settings as a base
   ];
 
-  programs.wezterm = {
-    # programs.wezterm.enable and .extraConfig are inherited from home.nix
-    # Override the package to use our nixGL wrapped version for Linux
-    package = wrappedWezterm;
-  };
-
   # These packages are additional to those defined in home.nix.
   # The module system will concatenate them.
   home.packages = with pkgs; [
-    aider-chat
+    docker
+    signal-desktop
   ];
 }

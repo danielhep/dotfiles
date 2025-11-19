@@ -20,5 +20,7 @@ in
   home.packages = [
     pkgs.colima
     pkgs.docker
+    pkgs.sops
+    pkgs.awscli2
   ];
 }

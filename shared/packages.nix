@@ -30,4 +30,7 @@ with pkgs;
   jujutsu
   jjui
   sl
+  k3d
+  kubectl
+  kubernetes-helm
 ]

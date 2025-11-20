@@ -6,8 +6,12 @@
   lib,
   config,
   pkgs,
+  system,
   ...
 }:
+let
+  isMac = (lib.systems.elaborate system).isDarwin;
+in
 {
   # You can import other home-manager modules here
   imports = [
@@ -29,15 +33,14 @@
 
   home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
 
-  programs.wezterm = {
+  programs.ghostty = {
     enable = true;
-    extraConfig = builtins.readFile ./programs/wezterm/wezterm.lua;
-  };
-  xdg.configFile = {
-    "wezterm" = {
-      source = ./programs/wezterm;
-      recursive = true;
-      enable = true;
+    package =  (if isMac then pkgs.ghostty-bin else pkgs.ghostty);
+    settings = {
+      # Font
+      font-family = "MesloLGS Nerd Font Mono";
+      font-size = 14;
+      command = "${pkgs.fish}/bin/fish";
     };
   };
   programs.atuin = {

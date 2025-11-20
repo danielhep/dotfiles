@@ -4,6 +4,7 @@
   lib,
   config,
   pkgs,
+  system,
   ...
 }:
 
@@ -14,6 +15,7 @@ let
       lib
       config
       pkgs
+      system
       ;
   };
 in
@@ -29,8 +31,6 @@ in
     ++ (with pkgs; [
       # Additional packages for work environment
     ]);
-
-  xdg = baseConfig.xdg;
 
   systemd = baseConfig.systemd;
 

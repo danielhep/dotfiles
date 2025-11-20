@@ -33,9 +33,44 @@ in
 
   home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
 
+  programs.zed-editor = {
+    enable = true;
+    extensions = [
+      "nix"
+      "swift"
+      "html"
+      "toml"
+      "dockerfile"
+      "java"
+      "astro"
+      "graphql"
+      "dart"
+      "catppuccin-icons"
+      "biome"
+      "docker-compose"
+    ];
+    userSettings = {
+      vim_mode = true;
+      buffer_font_size = 14;
+      ui_font_size = 16;
+      theme = {
+        mode = "system";
+        light = "Ayu Light";
+        dark = "Ayu Dark";
+      };
+      minimap = {
+        show = "auto";
+      };
+      terminal = {
+        shell = {
+          program = "fish";
+        };
+      };
+    };
+  };
   programs.ghostty = {
     enable = true;
-    package =  (if isMac then pkgs.ghostty-bin else pkgs.ghostty);
+    package = (if isMac then pkgs.ghostty-bin else pkgs.ghostty);
     settings = {
       # Font
       font-family = "MesloLGS Nerd Font Mono";

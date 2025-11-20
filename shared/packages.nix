@@ -33,4 +33,9 @@ with pkgs;
   k3d
   kubectl
   kubernetes-helm
+
+  # codinng agents
+  claude-code
+  codex
+  gemini-cli
 ]

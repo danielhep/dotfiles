@@ -12,6 +12,7 @@
 }:
 let
   isMac = (lib.systems.elaborate system).isDarwin;
+  nixGLWrap = config.lib.nixGL.wrap;
 in
 {
   # You can import other home-manager modules here
@@ -38,8 +39,10 @@ in
     packages = import nixgl { inherit pkgs; };
     defaultWrapper = "mesa"; # or the driver you need
     installScripts = [ "mesa" ];
+    vulkan.enable = true;
   };
   programs.zed-editor = {
+    package = (if isMac then pkgs.zed-editor else (nixGLWrap pkgs.zed-editor));
     enable = true;
     extensions = [
       "nix"
@@ -76,18 +79,14 @@ in
   };
   programs.ghostty = {
     enable = true;
-    package = (if isMac then pkgs.ghostty-bin else pkgs.ghostty);
+    package = (if isMac then pkgs.ghostty-bin else (nixGLWrap pkgs.ghostty));
+    enableFishIntegration = true;
     settings = {
       # Font
       font-family = "MesloLGS Nerd Font Mono";
       font-size = 14;
       command = "${pkgs.fish}/bin/fish";
     };
-  };
-  programs.ghostty = {
-    enable = true;
-    package = (config.lib.nixGL.wrap pkgs.ghostty);
-    enableFishIntegration = true;
   };
   programs.atuin = {
     enable = true;

@@ -131,6 +131,7 @@
           extraSpecialArgs = {
             inherit inputs;
             inherit nixgl;
+            system = "x86_64-linux";
           }; # Pass flake inputs to our config
           modules = [
             ./home-manager/linux.nix

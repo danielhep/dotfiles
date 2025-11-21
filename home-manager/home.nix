@@ -7,12 +7,12 @@
   config,
   pkgs,
   system,
-  nixgl,
+  nixgl ? null,
   ...
 }:
 let
   isMac = (lib.systems.elaborate system).isDarwin;
-  nixGLWrap = config.lib.nixGL.wrap;
+  nixGLWrap = if nixgl != null then config.lib.nixGL.wrap else (pkg: pkg);
 in
 {
   # You can import other home-manager modules here
@@ -35,7 +35,7 @@ in
 
   home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
 
-  nixGL = {
+  nixGL = lib.mkIf (nixgl != null) {
     packages = import nixgl { inherit pkgs; };
     defaultWrapper = "mesa"; # or the driver you need
     installScripts = [ "mesa" ];

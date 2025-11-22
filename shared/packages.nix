@@ -39,5 +39,4 @@ with pkgs;
   claude-code
   codex
   gemini-cli
-  google-antigravity
 ]

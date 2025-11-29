@@ -75,6 +75,11 @@ in
           program = "fish";
         };
       };
+      languages = {
+        Markdown = {
+          show_edit_predictions = false;
+        };
+      };
     };
   };
   programs.ghostty = {

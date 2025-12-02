@@ -24,6 +24,7 @@ with pkgs;
   go
   fvm
   fnm
+  bun
   lazydocker
   lazygit
   gh

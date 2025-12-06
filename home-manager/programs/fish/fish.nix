@@ -9,6 +9,39 @@
       direnv hook fish | source
     '';
     functions = {
+      kill-port = ''
+        # Check if a port number is provided
+        if test (count $argv) -eq 0
+            echo "Usage: kill-port <port>"
+            return 1
+        end
+
+        set port $argv[1]
+
+        # Find the process running on the specified port
+        set pid (lsof -ti:$port)
+
+        if test -z "$pid"
+            echo "No process found running on port $port"
+            return 1
+        end
+
+        # Get process name for display
+        set process_name (ps -p $pid -o comm=)
+
+        echo "Killing process $process_name (PID: $pid) running on port $port"
+
+        # Kill the process
+        kill -9 $pid
+
+        if test $status -eq 0
+            echo "Successfully killed process on port $port"
+        else
+            echo "Failed to kill process on port $port"
+            return 1
+        end
+      '';
+
       sync_files = ''
         # Check if the correct number of arguments is provided
         if test (count $argv) -ne 2

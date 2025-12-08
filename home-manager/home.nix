@@ -19,6 +19,8 @@ in
   imports = [
     ./programs/vscode.nix
     ./programs/fish/fish.nix
+    ./programs/bash.nix
+    ./programs/zsh.nix
     ./programs/git.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule

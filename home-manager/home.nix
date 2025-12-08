@@ -90,8 +90,7 @@ in
       # Font
       font-family = "MesloLGS Nerd Font Mono";
       font-size = 14;
-      command = "${pkgs.fish}/bin/fish";
-      command = "TERM=xterm-256color /usr/bin/bash";
+      command = "TERM=xterm-256color ${pkgs.fish}/bin/fish";
     };
   };
   programs.atuin = {

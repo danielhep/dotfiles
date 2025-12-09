@@ -1,4 +1,4 @@
-# work.nix
+# linux.nix
 {
   inputs,
   lib,
@@ -29,6 +29,14 @@ in
   imports = [
     ./home.nix # Import home.nix to use its settings as a base
   ];
+
+  # Enable generic Linux desktop integration
+  # This makes Nix-managed .desktop files visible to KRunner and other app launchers
+  targets.genericLinux.enable = true;
+
+  # Enable XDG desktop entries management
+  xdg.enable = true;
+  xdg.mime.enable = true;
 
   # These packages are additional to those defined in home.nix.
   # The module system will concatenate them.

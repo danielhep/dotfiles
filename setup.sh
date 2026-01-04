@@ -11,5 +11,5 @@ elif [ "$OS" = "Darwin" ]; then
     sudo nix run nix-darwin -- switch --flake .#$LOWERCASE_HOSTNAME
 else
     echo "Running home-manager..."
-    nix run home-manager -- --flake .#$(whoami)@$LOWERCASE_HOSTNAME switch
+    nix run home-manager -- --flake .#$(whoami)@$LOWERCASE_HOSTNAME switch -b backup
 fi

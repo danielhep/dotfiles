@@ -32,6 +32,7 @@ with pkgs;
   jjui
   sl
   k3d
+  k9s
   kubectl
   kubernetes-helm
 

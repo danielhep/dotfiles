@@ -19,6 +19,8 @@ in
   imports = [
     ./programs/vscode.nix
     ./programs/fish/fish.nix
+    ./programs/bash.nix
+    ./programs/zsh.nix
     ./programs/git.nix
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
@@ -90,7 +92,7 @@ in
       # Font
       font-family = "MesloLGS Nerd Font Mono";
       font-size = 14;
-      command = "TERM=xterm-256color /usr/bin/bash ${pkgs.fish}/bin/fish";
+      command = "TERM=xterm-256color ${pkgs.fish}/bin/fish";
     };
   };
   programs.atuin = {

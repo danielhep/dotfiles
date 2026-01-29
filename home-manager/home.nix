@@ -48,7 +48,6 @@ in
     enable = true;
     extensions = [
       "nix"
-      "swift"
       "html"
       "toml"
       "dockerfile"

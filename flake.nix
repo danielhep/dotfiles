@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix-darwin
@@ -19,11 +19,6 @@
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
 
     nixgl.url = "github:nix-community/nixGL";
-
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -48,7 +43,7 @@
       # Function to apply overlay
       pkgsForSystem = system: import nixpkgs {
         inherit system;
-        overlays = [  overlays nixgl.overlay inputs.antigravity-nix.overlays.default ];
+        overlays = [ overlays nixgl.overlay ];
         config = { allowUnfree = true; };  # Set allowUnfree here
       };
       mkDarwinConfig =

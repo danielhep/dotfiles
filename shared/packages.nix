@@ -17,8 +17,6 @@ with pkgs;
   ripgrep-all
   starship
   comma
-  jdk
-  maven
   nerd-fonts.jetbrains-mono
   nerd-fonts.meslo-lg
   go
@@ -40,5 +38,4 @@ with pkgs;
   claude-code
   codex
   gemini-cli
-  opencode
 ]

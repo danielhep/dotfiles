@@ -31,7 +31,6 @@
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
     fswatch
-    dockutil
   ];
 
   # Add ability to used TouchID for sudo authentication

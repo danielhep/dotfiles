@@ -7,6 +7,9 @@
 {
   homebrew = {
     enable = true;
+    brews = [
+      "dockutil"
+    ];
     casks = [
       "discord"
       "signal"

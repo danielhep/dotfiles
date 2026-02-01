@@ -41,7 +41,6 @@ in
   # These packages are additional to those defined in home.nix.
   # The module system will concatenate them.
   home.packages = with pkgs; [
-    docker
     signal-desktop
   ];
 }

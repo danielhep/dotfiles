@@ -62,6 +62,7 @@
               nixpkgs.pkgs = pkgsForSystem system;
               home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ] ++ sharedHomeModules;
               home-manager.useGlobalPkgs = true;
+              home-manager.backupFileExtension = "backup";
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
                 imports = [ ./home-manager/macos.nix ] ++ homeModules;

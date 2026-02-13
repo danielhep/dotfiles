@@ -86,12 +86,12 @@ in
   programs.ghostty = {
     enable = true;
     package = (if isMac then pkgs.ghostty-bin else (nixGLWrap pkgs.ghostty));
-    enableFishIntegration = true;
+    # enableFishIntegration = true;
     settings = {
       # Font
       font-family = "MesloLGS Nerd Font Mono";
-      font-size = 14;
-      command = "TERM=xterm-256color ${pkgs.fish}/bin/fish";
+      font-size = 12;
+      command = "${pkgs.fish}/bin/fish";
     };
   };
   programs.atuin = {

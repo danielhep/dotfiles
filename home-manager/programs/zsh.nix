@@ -1,11 +1,12 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.zsh = {
     enable = true;
+    dotDir = config.home.homeDirectory;
     
     # This runs for interactive shells
-    initExtra = ''
+    initContent = ''
       # Source nix-daemon if it exists (for non-NixOS systems)
       if [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -27,4 +28,3 @@
     '';
   };
 }
-

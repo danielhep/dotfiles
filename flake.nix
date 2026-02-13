@@ -73,27 +73,46 @@
             }
           ];
         };
-    in
-    {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        nixos-personal = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+      mkNixosConfig =
+        {
+          hostname,
+          system ? "x86_64-linux",
+          username ? "danielhep",
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
           specialArgs = {
-            inherit inputs;
+            inherit inputs hostname system username;
           };
           modules = [
             ./nixos/configuration.nix
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.pkgs = pkgsForSystem system;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.danielhep = import ./home-manager/linux.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs system;
+                nixgl = inputs.nixgl;
+              };
+              home-manager.users.${username} = import ./home-manager/linux.nix;
             }
           ];
         };
-      };
+    in
+    {
+      # NixOS configuration entrypoint
+      # Available through 'nixos-rebuild --flake .#your-hostname'
+      nixosConfigurations =
+        let
+          nixosDefault = mkNixosConfig {
+            hostname = "nixos";
+          };
+        in
+        {
+          nixos = nixosDefault;
+          nixos-personal = nixosDefault;
+        };
 
       # Nix-darwin configuration entrypoint
       # Available through 'darwin-rebuild switch --flake .#your-hostname'
@@ -116,6 +135,7 @@
           pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs;
+            system = "aarch64-darwin";
           }; # Pass flake inputs to our config
           modules = [
             ./home-manager/macos.nix

@@ -7,7 +7,7 @@ with pkgs;
   fzf
   direnv
   zoxide
-  nixfmt-rfc-style
+  nixfmt
   iperf3
   grc
   eza

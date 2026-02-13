@@ -37,7 +37,7 @@ in
 
   home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
 
-  nixGL = lib.mkIf (nixgl != null) {
+  targets.genericLinux.nixGL = lib.mkIf (nixgl != null) {
     packages = import nixgl { inherit pkgs; };
     defaultWrapper = "mesa"; # or the driver you need
     installScripts = [ "mesa" ];

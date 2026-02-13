@@ -3,10 +3,12 @@
 {
   programs.git = {
     enable = true;
-    userName = "danielhep";
-    userEmail = "dh@danielheppner.com";
-    aliases = {
-      st = "status";
+    settings = {
+      user.name = "danielhep";
+      user.email = "dh@danielheppner.com";
+      alias = {
+        st = "status";
+      };
     };
     includes = [
       {

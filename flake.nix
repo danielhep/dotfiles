@@ -108,10 +108,14 @@
           nixosDefault = mkNixosConfig {
             hostname = "nixos";
           };
+          personalLinux = mkNixosConfig {
+            hostname = "personal-linux";
+          };
         in
         {
           nixos = nixosDefault;
           nixos-personal = nixosDefault;
+          personal-linux = personalLinux;
         };
 
       # Nix-darwin configuration entrypoint

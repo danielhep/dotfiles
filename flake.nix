@@ -19,6 +19,7 @@
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
 
     nixgl.url = "github:nix-community/nixGL";
+    opencode-flake.url = "github:AodhanHayter/opencode-flake";
   };
 
   outputs =
@@ -108,10 +109,14 @@
           nixosDefault = mkNixosConfig {
             hostname = "nixos";
           };
+          personalLinux = mkNixosConfig {
+            hostname = "personal-linux";
+          };
         in
         {
           nixos = nixosDefault;
           nixos-personal = nixosDefault;
+          personal-linux = personalLinux;
         };
 
       # Nix-darwin configuration entrypoint

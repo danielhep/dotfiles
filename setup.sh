@@ -8,17 +8,9 @@ cd "$SCRIPT_DIR"
 LOWERCASE_HOSTNAME=$(hostname -s | awk '{print tolower($0)}')
 OS=$(uname -s)
 
-has_nixos_target() {
-    local target="$1"
-    nix eval --raw "path:.#nixosConfigurations.\"${target}\".config.system.stateVersion" >/dev/null 2>&1
-}
-
 if grep -q 'NAME=NixOS' /etc/os-release 2>/dev/null; then
     echo "Detected NixOS. Rebuilding system configuration..."
     TARGET="$LOWERCASE_HOSTNAME"
-    if ! has_nixos_target "$TARGET"; then
-        TARGET="nixos"
-    fi
     echo "Using NixOS flake target: $TARGET"
     sudo nixos-rebuild switch --flake "path:.#$TARGET"
 elif [ "$OS" = "Darwin" ]; then

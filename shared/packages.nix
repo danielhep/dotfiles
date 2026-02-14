@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 with pkgs;
 [
@@ -35,7 +35,6 @@ with pkgs;
   kubernetes-helm
 
   # codinng agents
-  claude-code
   codex
-  gemini-cli
+  inputs.opencode-flake.packages.${pkgs.system}.default
 ]

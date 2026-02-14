@@ -69,6 +69,7 @@
                 imports = [ ./home-manager/macos.nix ] ++ homeModules;
               };
               home-manager.extraSpecialArgs = {
+                inherit inputs;
                 inherit system;
               };
             }

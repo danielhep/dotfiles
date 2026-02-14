@@ -81,6 +81,16 @@ in
           show_edit_predictions = false;
         };
       };
+      vim = {
+        use_system_clipboard = "on_yank";
+      };
+      lsp ={
+        biome = {
+          settings = {
+            require_config_file = true;
+          };
+        };
+      };
     };
   };
   programs.ghostty = {

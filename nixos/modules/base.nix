@@ -72,8 +72,6 @@
   programs.zsh.enable = true;
   programs.firefox.enable = lib.mkDefault true;
 
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
-
   environment.systemPackages = with pkgs; [
     git
     vim

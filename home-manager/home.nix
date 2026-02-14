@@ -35,7 +35,7 @@ in
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
-  home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs; };
+  home.packages = with pkgs; [ ] ++ import ../shared/packages.nix { inherit pkgs inputs; };
 
   targets.genericLinux.nixGL = lib.mkIf (nixgl != null) {
     packages = import nixgl { inherit pkgs; };

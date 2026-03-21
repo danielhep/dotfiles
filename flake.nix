@@ -19,7 +19,6 @@
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
 
     nixgl.url = "github:nix-community/nixGL";
-    opencode-flake.url = "github:AodhanHayter/opencode-flake";
   };
 
   outputs =
@@ -69,7 +68,7 @@
                 imports = [ ./home-manager/macos.nix ] ++ homeModules;
               };
               home-manager.extraSpecialArgs = {
-                inherit system;
+                inherit inputs system;
               };
             }
           ];

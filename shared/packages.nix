@@ -12,6 +12,7 @@ with pkgs;
   grc
   eza
   bat
+  gnupg1
   iftop
   ripgrep
   ripgrep-all
@@ -23,6 +24,8 @@ with pkgs;
   fvm
   fnm
   bun
+  uv
+  python3
   lazydocker
   lazygit
   gh
@@ -36,5 +39,4 @@ with pkgs;
 
   # codinng agents
   codex
-  inputs.opencode-flake.packages.${pkgs.system}.default
 ]

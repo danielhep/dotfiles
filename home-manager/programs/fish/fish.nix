@@ -43,15 +43,21 @@
       '';
 
       sync_photos = ''
-        if test (count $argv) -ne 1
-            echo "Usage: sync_photos <directory_name>"
+        if test (count $argv) -lt 1; or test (count $argv) -gt 2
+            echo "Usage: sync_photos <directory_name> [extension]"
             return 1
         end
 
         set directory_name $argv[1]
 
+        set rclone_filter ""
+        if test (count $argv) -eq 2
+            set extension $argv[2]
+            set rclone_filter --include "*.$extension"
+        end
+
         echo "Syncing photos to tower-travel-media:/travel_media/$directory_name ..."
-        rclone move ./ tower-travel-media:/travel_media/$directory_name -v
+        rclone move ./ tower-travel-media:/travel_media/$directory_name -v $rclone_filter
       '';
     };
     shellInit = ''

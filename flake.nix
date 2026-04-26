@@ -29,6 +29,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-darwin,
       home-manager,
       darwin,
       mac-app-util,
@@ -114,7 +115,12 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs hostname system username;
+            inherit
+              inputs
+              hostname
+              system
+              username
+              ;
           };
           modules = [
             ./nixos/configuration.nix

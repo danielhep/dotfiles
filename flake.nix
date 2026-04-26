@@ -5,13 +5,16 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # Darwin-specific nixpkgs for better macOS binary cache coverage
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix-darwin
     darwin.url = "github:lnl7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
     mac-app-util.url = "github:hraban/mac-app-util";
 
@@ -42,25 +45,52 @@
         # vscode-extensions = nixpkgs-unstable.legacyPackages.${prev.system}.vscode-extensions;
       };
       # Function to apply overlay
-      pkgsForSystem = system: import nixpkgs {
-        inherit system;
-        overlays = [ overlays nixgl.overlay ];
-        config = { allowUnfree = true; };  # Set allowUnfree here
-      };
+      pkgsForSystem =
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = [
+            overlays
+            nixgl.overlay
+          ];
+          config = {
+            allowUnfree = true;
+          }; # Set allowUnfree here
+        };
+      pkgsForDarwin =
+        system:
+        import nixpkgs-darwin {
+          inherit system;
+          overlays = [
+            overlays
+            nixgl.overlay
+          ];
+          config = {
+            allowUnfree = true;
+          };
+        };
       mkDarwinConfig =
-        { system, username, homeModules ? [ ], sharedHomeModules ? [ ] }:
+        {
+          system,
+          username,
+          homeModules ? [ ],
+          sharedHomeModules ? [ ],
+        }:
+        let
+          darwinPkgs = pkgsForDarwin system;
+        in
         darwin.lib.darwinSystem {
           inherit system;
           specialArgs = {
             inherit inputs username system;
-            pkgs = pkgsForSystem system;
+            pkgs = darwinPkgs;
           };
           modules = [
             ./darwin
             mac-app-util.darwinModules.default
             home-manager.darwinModules.home-manager
             {
-              nixpkgs.pkgs = pkgsForSystem system;
+              nixpkgs.pkgs = darwinPkgs;
               home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ] ++ sharedHomeModules;
               home-manager.useGlobalPkgs = true;
               home-manager.backupFileExtension = "backup";
@@ -138,7 +168,7 @@
       # Available through 'home-manager --flake .#configurationName'
       homeConfigurations = {
         "danielhep@daniels-mbp" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+          pkgs = nixpkgs-darwin.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
             inherit inputs;
             system = "aarch64-darwin";

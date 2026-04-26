@@ -84,7 +84,7 @@ in
       vim = {
         use_system_clipboard = "on_yank";
       };
-      lsp ={
+      lsp = {
         biome = {
           settings = {
             require_config_file = true;
@@ -104,6 +104,16 @@ in
       command = "${pkgs.fish}/bin/fish";
     };
   };
+  programs.rclone.enable = true;
+
+  xdg.configFile."rclone/rclone.conf".text = ''
+    [tower-travel-media]
+    type = webdav
+    url = http://tower:3924/
+    user = k
+    pass = ZihAQLZ92BJpvFZcQK3XytUyuvM7cGEO
+  '';
+
   programs.atuin = {
     enable = true;
     settings = {

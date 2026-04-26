@@ -21,5 +21,6 @@ in
     pkgs.colima
     pkgs.sops
     pkgs.awscli2
+    pkgs.maven
   ];
 }

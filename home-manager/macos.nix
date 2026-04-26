@@ -33,6 +33,7 @@ in
     ]);
 
   systemd = baseConfig.systemd;
+  xdg = baseConfig.xdg;
 
   home.stateVersion = baseConfig.home.stateVersion;
 }

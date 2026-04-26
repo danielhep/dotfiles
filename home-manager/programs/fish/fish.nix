@@ -42,29 +42,22 @@
         end
       '';
 
-      sync_files = ''
-        # Check if the correct number of arguments is provided
-        if test (count $argv) -ne 2
-            echo "Usage: sync_files [local|remote] <subfolder>"
+      sync_photos = ''
+        if test (count $argv) -lt 1; or test (count $argv) -gt 2
+            echo "Usage: sync_photos <directory_name> [extension]"
             return 1
         end
 
-        # Extract the arguments
-        set dest_type $argv[1]
-        set subfolder $argv[2]
+        set directory_name $argv[1]
 
-        # Set the destination based on the first argument
-        if test $dest_type = "local"
-            set DEST "$HOME/sync_files/$subfolder"
-        else if test $dest_type = "remote"
-            set DEST "danielhep@tower:/$subfolder"
-        else
-            echo "Invalid destination type. Use 'local' or 'remote'."
-            return 1
+        set rclone_filter ""
+        if test (count $argv) -eq 2
+            set extension $argv[2]
+            set rclone_filter --include "*.$extension"
         end
 
-        # Run the rsync command
-        rsync -avPh --stats --remove-source-files -e "ssh -p 2022 -i ~/.ssh/id_rsa" ./ $DEST
+        echo "Syncing photos to tower-travel-media:/travel_media/$directory_name ..."
+        rclone move ./ tower-travel-media:/travel_media/$directory_name -v $rclone_filter
       '';
     };
     shellInit = ''

@@ -44,7 +44,7 @@ in
     vulkan.enable = true;
   };
   programs.zed-editor = {
-    package = (if isMac then pkgs.zed-editor else (nixGLWrap pkgs.zed-editor));
+    package = (if isMac then null else (nixGLWrap pkgs.zed-editor));
     enable = true;
     extensions = [
       "nix"

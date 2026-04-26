@@ -37,6 +37,4 @@ with pkgs;
   kubectl
   kubernetes-helm
 
-  # codinng agents
-  codex
 ]

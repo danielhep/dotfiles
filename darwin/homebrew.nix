@@ -24,6 +24,9 @@
 
       # Browsers
       "firefox"
+
+      # Editors (not cached for aarch64-darwin in nixpkgs)
+      "zed"
     ];
   };
 }

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
+  "preset": "openai",
+  "presets": {
+    "openai": {
+      "orchestrator": {
+        "model": "zai-coding-plan/glm-5.1",
+        "skills": ["*"],
+        "mcps": ["*", "!context7"],
+      },
+      "oracle": {
+        "model": "zai-coding-plan/glm-5.1",
+        "variant": "high",
+        "skills": ["simplify"],
+        "mcps": [],
+      },
+      "librarian": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "variant": "low",
+        "skills": [],
+        "mcps": ["websearch", "context7", "grep_app"],
+      },
+      "explorer": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "variant": "low",
+        "skills": [],
+        "mcps": [],
+      },
+      "designer": {
+        "model": "opencode-go/kimi-k2.6",
+        "variant": "medium",
+        "skills": ["agent-browser"],
+        "mcps": [],
+      },
+      "fixer": {
+        "model": "opencode-go/deepseek-v4-flash",
+        "variant": "low",
+        "skills": [],
+        "mcps": [],
+      },
+    },
+  },
+}

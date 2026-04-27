@@ -4,7 +4,6 @@
     "question": "allow"
   },
   "plugin": [
-    "opencode-openai-codex-auth@4.2.0",
     "oh-my-opencode-slim"
   ],
   "agent": {

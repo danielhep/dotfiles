@@ -7,6 +7,16 @@
     "oh-my-opencode-slim",
     "@guard22/opencode-multi-auth-codex@latest"
   ],
+  "provider": {
+    "tower": {
+      "npm": "@ai-sdk/openai",
+      "name": "Tower Proxy",
+      "options": {
+        "baseURL": "http://tower:8095/v1",
+        "apiKey": "pwd"
+      }
+    }
+  },
   "agent": {
     "explore": {
       "disable": true

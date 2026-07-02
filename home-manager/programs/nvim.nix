@@ -5,6 +5,7 @@ let
     # Build tools (for treesitter parsers, telescope-fzf-native, etc.)
     gcc
     gnumake
+    tree-sitter
     unzip
     # Telescope dependencies
     ripgrep

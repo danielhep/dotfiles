@@ -5,8 +5,6 @@
     enable = true;
     interactiveShellInit = ''
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-
-      direnv hook fish | source
     '';
     functions = {
       kill-port = ''
@@ -59,6 +57,9 @@
         echo "Syncing photos to tower-travel-media:/travel_media/$directory_name ..."
         rclone move ./ tower-travel-media:/travel_media/$directory_name -v $rclone_filter
       '';
+    };
+    shellAliases = {
+      lg = "lazygit";
     };
     shellInit = ''
       # nix

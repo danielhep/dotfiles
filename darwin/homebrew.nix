@@ -15,15 +15,17 @@
       "signal"
       "whatsapp"
       "rectangle"
-      "tailscale"
+      "tailscale-app"
+      "bitwarden"
 
       # Utils
-      "syncthing"
-      "raycast"
+      "syncthing-app"
       "stats"
+      "maccy"
 
       # Browsers
       "firefox"
+      "zen"
 
       # Editors (not cached for aarch64-darwin in nixpkgs)
       "zed"

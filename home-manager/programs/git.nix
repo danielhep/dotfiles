@@ -3,6 +3,7 @@
 {
   programs.git = {
     enable = true;
+    signing.format = null;
     settings = {
       user.name = "danielhep";
       user.email = "dh@danielheppner.com";

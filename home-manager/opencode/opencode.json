@@ -5,7 +5,8 @@
   },
   "plugin": [
     "oh-my-opencode-slim",
-    "@guard22/opencode-multi-auth-codex@latest"
+    "@guard22/opencode-multi-auth-codex@latest",
+    "superpowers@git+https://github.com/obra/superpowers.git"
   ],
   "provider": {
       "tower": {
